@@ -42,7 +42,7 @@ class FactSheetViewController: UIViewController {
     
     func setup(tableView: UITableView) {
         tableView.dataSource = self
-        factsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "factCell")
+        factsTableView.register(FactTableViewCell.self, forCellReuseIdentifier: "factCell")
         setupConstraints(forTable: tableView)
     }
     
@@ -62,9 +62,12 @@ extension FactSheetViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "factCell", for: indexPath)
-        cell.textLabel?.text = facts[indexPath.row].title
-        return cell
+        let tableCell = UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "factCell", for: indexPath) as? FactTableViewCell {
+            cell.fact = facts[indexPath.row]
+            return cell
+        }
+        return tableCell
     }
 
 }

@@ -7,6 +7,8 @@ target 'GeographicalFactSheet' do
 
   # Pods for GeographicalFactSheet
     pod 'Alamofire', '~> 4.7'
+    pod 'SDWebImage', '~> 4.0'
+    pod 'SnapKit', '~> 4.0'
 
   target 'GeographicalFactSheetTests' do
     inherit! :search_paths

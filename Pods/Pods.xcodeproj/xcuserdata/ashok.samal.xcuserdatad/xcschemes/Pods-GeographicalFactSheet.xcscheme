@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DAD48DE3EEF53480E08AEFFEB8EFA462"
+               BlueprintIdentifier = "761E015992EEDC776B5012357177A4A4"
                BuildableName = "Pods_GeographicalFactSheet.framework"
                BlueprintName = "Pods-GeographicalFactSheet"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DAD48DE3EEF53480E08AEFFEB8EFA462"
+            BlueprintIdentifier = "761E015992EEDC776B5012357177A4A4"
             BuildableName = "Pods_GeographicalFactSheet.framework"
             BlueprintName = "Pods-GeographicalFactSheet"
             ReferencedContainer = "container:Pods.xcodeproj">
