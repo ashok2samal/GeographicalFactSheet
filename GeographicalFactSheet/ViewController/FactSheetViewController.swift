@@ -22,28 +22,46 @@ class FactSheetViewController: UIViewController {
         setup(tableView: factsTableView)
         downloadFactsData()
     }
-
+    
     func downloadFactsData() {
-        FactSheetService.getFacts() { (result) in
-            self.factSheet = result
-            if let factsArray = self.factSheet?.rows {
-                self.facts = factsArray
+        if FactSheetService.isConnectedToInternet {
+            FactSheetService.getFacts() { (result) in
+                self.factSheet = result
+                if let factsArray = self.factSheet?.rows {
+                    self.facts = factsArray
+                }
+                self.navigationItem.title = self.factSheet?.title
+                self.factsTableView.reloadData()
             }
-            self.navigationItem.title = self.factSheet?.title
-            self.factsTableView.reloadData()
+        } else {
+            showAlert()
         }
+    }
+    
+    func showAlert()
+    {
+        let alert = UIAlertController(title: "Connection Error!!",
+                                      message: "Please check your internet connection.",
+                                      preferredStyle: .alert)
+    
+        let retryButton = UIAlertAction(title: "Retry", style: UIAlertActionStyle.default, handler: { action in
+            self.downloadFactsData()
+        })
+        alert.addAction(retryButton)
+        self.present(alert, animated: true, completion:nil)
     }
     
     func setupNavigationController() {
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.foregroundColor:#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1) ]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1) ]
     }
     
     func setup(tableView: UITableView) {
         tableView.dataSource = self
-        factsTableView.register(FactTableViewCell.self, forCellReuseIdentifier: "factCell")
+        tableView.register(FactTableViewCell.self, forCellReuseIdentifier: "factCell")
         setupConstraints(forTable: tableView)
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func setupConstraints(forTable tableView: UITableView) {

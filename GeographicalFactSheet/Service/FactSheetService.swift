@@ -11,6 +11,10 @@ import Alamofire
 
 class FactSheetService {
     
+    class var isConnectedToInternet:Bool {
+        return NetworkReachabilityManager()!.isReachable
+    }
+    
     static func getFacts(completion: @escaping (_ result: FactSheet) -> Void) {
         var factSheet: FactSheet?
         Alamofire.request("https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json").responseJSON { response in

@@ -104,25 +104,29 @@ class FactTableViewCell: UITableViewCell {
     
     func updateCellWithData(fromItem fact: Fact) {
         if let imageURL = fact.imageHref {
-            self.factImage.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: "placeholder.png"), options: [SDWebImageOptions.cacheMemoryOnly,SDWebImageOptions.allowInvalidSSLCertificates], completed: { (image, error, fetchedFrom, originalUrl) in
-                if error == nil {
-                    if image != nil {
-                        self.factImage.image = image
-                    }
-                    else {
-                        self.factImage.image = UIImage(named: "placeholder.png")
-                    }
-                    if let tableView = self.superview as? UITableView {
-                        if let indexPath = tableView.indexPath(for: self) {
-                            tableView.reloadRows(at: [indexPath], with: .automatic)
+            if FactSheetService.isConnectedToInternet {
+                self.factImage.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: "placeholder.png"), options: [SDWebImageOptions.cacheMemoryOnly,SDWebImageOptions.allowInvalidSSLCertificates], completed: { (image, error, fetchedFrom, originalUrl) in
+                    if error == nil {
+                        if image != nil {
+                            self.factImage.image = image
+                        } else {
+                            self.factImage.image = UIImage(named: "placeholder.png")
+                        }
+                        if let tableView = self.superview as? UITableView {
+                            if let indexPath = tableView.indexPath(for: self) {
+                                tableView.reloadRows(at: [indexPath], with: .automatic)
+                            }
                         }
                     }
-                }
-                
-            })
+                })
+            } else {
+                self.factImage.image = UIImage(named: "placeholder.png")
+                ((window?.rootViewController as? UINavigationController)?.viewControllers[0] as? FactSheetViewController)?.showAlert()
+            }
         } else {
             self.factImage.image = UIImage(named: "placeholder.png")
         }
+        
         if let title = fact.title {
             self.factTitle.text = title
         } else {
