@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FactSheet: Decodable {
+class FactSheet: Decodable {
     let title: String?
     let rows: [Fact]?
 }

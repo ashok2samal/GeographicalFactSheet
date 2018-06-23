@@ -16,6 +16,8 @@
 		6331D22120DE9500000C1232 /* FactSheetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331D22020DE9500000C1232 /* FactSheetService.swift */; };
 		6331D22320DEA530000C1232 /* FactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331D22220DEA530000C1232 /* FactTableViewCell.swift */; };
 		6331D22520DEA74E000C1232 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6331D22420DEA74E000C1232 /* placeholder.png */; };
+		6394476120DEC77500EEF695 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6394476020DEC77500EEF695 /* Constants.swift */; };
+		6394476320DECDFA00EEF695 /* noPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 6394476220DECDFA00EEF695 /* noPhoto.png */; };
 		674F4CE6C42D53F84BA72D6C /* Pods_GeographicalFactSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525F330EAD4DA6E745AE00D7 /* Pods_GeographicalFactSheet.framework */; };
 		F6557A8C79034010C1D3339D /* Pods_GeographicalFactSheetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0AD8B1250AD1EE29E69084A /* Pods_GeographicalFactSheetTests.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,8 @@
 		6331D22020DE9500000C1232 /* FactSheetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactSheetService.swift; sourceTree = "<group>"; };
 		6331D22220DEA530000C1232 /* FactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactTableViewCell.swift; sourceTree = "<group>"; };
 		6331D22420DEA74E000C1232 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		6394476020DEC77500EEF695 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6394476220DECDFA00EEF695 /* noPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noPhoto.png; sourceTree = "<group>"; };
 		6DBEB38750083320DBB451EA /* Pods-GeographicalFactSheet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeographicalFactSheet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeographicalFactSheet/Pods-GeographicalFactSheet.debug.xcconfig"; sourceTree = "<group>"; };
 		B9AA6019B7F9D9A7FC259CCE /* Pods-GeographicalFactSheetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeographicalFactSheetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeographicalFactSheetTests/Pods-GeographicalFactSheetTests.release.xcconfig"; sourceTree = "<group>"; };
 		C73E0DDF334873C7EED14585 /* Pods-GeographicalFactSheetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeographicalFactSheetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeographicalFactSheetTests/Pods-GeographicalFactSheetTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,10 +138,12 @@
 		6331D21C20DE8FE0000C1232 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6394476220DECDFA00EEF695 /* noPhoto.png */,
 				6331D22420DEA74E000C1232 /* placeholder.png */,
 				6331D1F620DE77AC000C1232 /* AppDelegate.swift */,
 				6331D1FD20DE77AC000C1232 /* Assets.xcassets */,
 				6331D1FF20DE77AC000C1232 /* LaunchScreen.storyboard */,
+				6394476020DEC77500EEF695 /* Constants.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -264,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6331D20120DE77AC000C1232 /* LaunchScreen.storyboard in Resources */,
+				6394476320DECDFA00EEF695 /* noPhoto.png in Resources */,
 				6331D22520DEA74E000C1232 /* placeholder.png in Resources */,
 				6331D1FE20DE77AC000C1232 /* Assets.xcassets in Resources */,
 			);
@@ -349,6 +356,7 @@
 				6331D22320DEA530000C1232 /* FactTableViewCell.swift in Sources */,
 				6331D1F920DE77AC000C1232 /* FactSheetViewController.swift in Sources */,
 				6331D1F720DE77AC000C1232 /* AppDelegate.swift in Sources */,
+				6394476120DEC77500EEF695 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

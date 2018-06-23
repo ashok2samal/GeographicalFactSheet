@@ -105,13 +105,9 @@ class FactTableViewCell: UITableViewCell {
     func updateCellWithData(fromItem fact: Fact) {
         if let imageURL = fact.imageHref {
             if FactSheetService.isConnectedToInternet {
-                self.factImage.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: "placeholder.png"), options: [SDWebImageOptions.cacheMemoryOnly,SDWebImageOptions.allowInvalidSSLCertificates], completed: { (image, error, fetchedFrom, originalUrl) in
+                factImage.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: kPlaceholderImageName), options: [SDWebImageOptions.cacheMemoryOnly,SDWebImageOptions.allowInvalidSSLCertificates], completed: { (image, error, fetchedFrom, originalUrl) in
                     if error == nil {
-                        if image != nil {
-                            self.factImage.image = image
-                        } else {
-                            self.factImage.image = UIImage(named: "placeholder.png")
-                        }
+                        self.factImage.image = image
                         if let tableView = self.superview as? UITableView {
                             if let indexPath = tableView.indexPath(for: self) {
                                 tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -120,22 +116,24 @@ class FactTableViewCell: UITableViewCell {
                     }
                 })
             } else {
-                self.factImage.image = UIImage(named: "placeholder.png")
+                factImage.image = UIImage(named: kPlaceholderImageName)
                 ((window?.rootViewController as? UINavigationController)?.viewControllers[0] as? FactSheetViewController)?.showAlert()
             }
         } else {
-            self.factImage.image = UIImage(named: "placeholder.png")
+            factImage.image = UIImage(named: kNullImagePlaceHolderName)
         }
         
         if let title = fact.title {
-            self.factTitle.text = title
+            factTitle.text = title
         } else {
-            self.factTitle.text = ""
+            factTitle.text = kBlankString
         }
         if let description = fact.description {
-            self.factDescription.text = description
+            factDescription.text = description
+            factDescription.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         } else {
-            self.factDescription.text = ""
+            factDescription.text = kNotAvailable
+            factDescription.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         }
     }
 }

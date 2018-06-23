@@ -28,7 +28,9 @@ class FactSheetViewController: UIViewController {
             FactSheetService.getFacts() { (result) in
                 self.factSheet = result
                 if let factsArray = self.factSheet?.rows {
-                    self.facts = factsArray
+                    self.facts = factsArray.filter({ (fact) -> Bool in
+                        fact.title != nil
+                    })
                 }
                 self.navigationItem.title = self.factSheet?.title
                 self.factsTableView.reloadData()
@@ -40,11 +42,11 @@ class FactSheetViewController: UIViewController {
     
     func showAlert()
     {
-        let alert = UIAlertController(title: "Connection Error!!",
-                                      message: "Please check your internet connection.",
+        let alert = UIAlertController(title: kConnectionErrorAlertTitle,
+                                      message: kConnectionErrorAlertMessage,
                                       preferredStyle: .alert)
     
-        let retryButton = UIAlertAction(title: "Retry", style: UIAlertActionStyle.default, handler: { action in
+        let retryButton = UIAlertAction(title: kAlertRetryButtonText, style: UIAlertActionStyle.default, handler: { action in
             self.downloadFactsData()
         })
         alert.addAction(retryButton)
@@ -59,7 +61,7 @@ class FactSheetViewController: UIViewController {
     
     func setup(tableView: UITableView) {
         tableView.dataSource = self
-        tableView.register(FactTableViewCell.self, forCellReuseIdentifier: "factCell")
+        tableView.register(FactTableViewCell.self, forCellReuseIdentifier: kCustomTableViewCellIdentifier)
         setupConstraints(forTable: tableView)
         tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -81,7 +83,7 @@ extension FactSheetViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableCell = UITableViewCell()
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "factCell", for: indexPath) as? FactTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: kCustomTableViewCellIdentifier, for: indexPath) as? FactTableViewCell {
             cell.fact = facts[indexPath.row]
             return cell
         }

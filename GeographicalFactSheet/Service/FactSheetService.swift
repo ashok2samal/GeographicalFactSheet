@@ -17,7 +17,7 @@ class FactSheetService {
     
     static func getFacts(completion: @escaping (_ result: FactSheet) -> Void) {
         var factSheet: FactSheet?
-        Alamofire.request("https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json").responseJSON { response in
+        Alamofire.request(kFactResourceEndpoint).responseJSON { response in
             if let data = response.data, let dataAsString = String(data: data, encoding: .isoLatin1) {
                 let encodedData = dataAsString.data(using: .utf8)
                 do {
