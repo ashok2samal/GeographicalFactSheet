@@ -1,0 +1,6 @@
+framework module Pods_GeographicalFactSheetTests {
+  umbrella header "Pods-GeographicalFactSheetTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

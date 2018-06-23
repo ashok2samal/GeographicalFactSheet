@@ -24,16 +24,17 @@ class FactSheetViewController: UIViewController {
     }
 
     func downloadFactsData() {
-        //TODO: Service call for fetching data and storing in facts array.
-        factSheet = FactSheet(title: "Canada", rows: [Fact(title: "Title", description: "Description", imageHref: "Image Link")])
-        if let factsArray = factSheet?.rows {
-            self.facts = factsArray
+        FactSheetService.getFacts() { (result) in
+            self.factSheet = result
+            if let factsArray = self.factSheet?.rows {
+                self.facts = factsArray
+            }
+            self.navigationItem.title = self.factSheet?.title
+            self.factsTableView.reloadData()
         }
-        factsTableView.reloadData()
     }
     
     func setupNavigationController() {
-        navigationItem.title = factSheet?.title
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.foregroundColor:#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1) ]
