@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6331D1F720DE77AC000C1232 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331D1F620DE77AC000C1232 /* AppDelegate.swift */; };
-		6331D1F920DE77AC000C1232 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331D1F820DE77AC000C1232 /* ViewController.swift */; };
-		6331D1FC20DE77AC000C1232 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6331D1FA20DE77AC000C1232 /* Main.storyboard */; };
+		6331D1F920DE77AC000C1232 /* FactSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331D1F820DE77AC000C1232 /* FactSheetViewController.swift */; };
 		6331D1FE20DE77AC000C1232 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6331D1FD20DE77AC000C1232 /* Assets.xcassets */; };
 		6331D20120DE77AC000C1232 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6331D1FF20DE77AC000C1232 /* LaunchScreen.storyboard */; };
 		6331D20C20DE77AC000C1232 /* GeographicalFactSheetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331D20B20DE77AC000C1232 /* GeographicalFactSheetTests.swift */; };
@@ -28,8 +27,7 @@
 /* Begin PBXFileReference section */
 		6331D1F320DE77AC000C1232 /* GeographicalFactSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeographicalFactSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6331D1F620DE77AC000C1232 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6331D1F820DE77AC000C1232 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6331D1FB20DE77AC000C1232 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6331D1F820DE77AC000C1232 /* FactSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactSheetViewController.swift; sourceTree = "<group>"; };
 		6331D1FD20DE77AC000C1232 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6331D20020DE77AC000C1232 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6331D20220DE77AC000C1232 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,8 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				6331D1F620DE77AC000C1232 /* AppDelegate.swift */,
-				6331D1F820DE77AC000C1232 /* ViewController.swift */,
-				6331D1FA20DE77AC000C1232 /* Main.storyboard */,
+				6331D1F820DE77AC000C1232 /* FactSheetViewController.swift */,
 				6331D1FD20DE77AC000C1232 /* Assets.xcassets */,
 				6331D1FF20DE77AC000C1232 /* LaunchScreen.storyboard */,
 				6331D20220DE77AC000C1232 /* Info.plist */,
@@ -181,7 +178,6 @@
 			files = (
 				6331D20120DE77AC000C1232 /* LaunchScreen.storyboard in Resources */,
 				6331D1FE20DE77AC000C1232 /* Assets.xcassets in Resources */,
-				6331D1FC20DE77AC000C1232 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6331D1F920DE77AC000C1232 /* ViewController.swift in Sources */,
+				6331D1F920DE77AC000C1232 /* FactSheetViewController.swift in Sources */,
 				6331D1F720DE77AC000C1232 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,14 +219,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6331D1FA20DE77AC000C1232 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6331D1FB20DE77AC000C1232 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6331D1FF20DE77AC000C1232 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

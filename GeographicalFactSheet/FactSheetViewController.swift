@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FactSheetViewController.swift
 //  GeographicalFactSheet
 //
 //  Created by Ashok Samal on 23/06/18.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FactSheetViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {
