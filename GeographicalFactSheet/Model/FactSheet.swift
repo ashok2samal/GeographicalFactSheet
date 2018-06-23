@@ -8,11 +8,13 @@
 
 import Foundation
 
+//Model for the entire view.
 class FactSheet: Decodable {
     let title: String?
     let rows: [Fact]?
 }
 
+//For each row on the table view.
 struct Fact: Decodable {
     let title: String?
     let description: String?

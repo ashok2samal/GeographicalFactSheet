@@ -14,8 +14,8 @@ class FactTableViewCell: UITableViewCell {
     
     let factImage: UIImageView = {
         let img = UIImageView()
-        img.contentMode = .center
-        img.translatesAutoresizingMaskIntoConstraints = false
+        img.contentMode = .center //image gets center without any proportion change.
+        img.translatesAutoresizingMaskIntoConstraints = false //Enables auto layout.
         return img
     }()
     
@@ -24,7 +24,7 @@ class FactTableViewCell: UITableViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         label.textAlignment = .center
-        label.numberOfLines = 0
+        label.numberOfLines = 0 //Allows multiline.
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -34,7 +34,7 @@ class FactTableViewCell: UITableViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         label.textAlignment = .center
-        label.numberOfLines = 0
+        label.numberOfLines = 0 //Allows multiline.
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -71,6 +71,7 @@ class FactTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
+    //Adds the subviews to the content view of the cell & applies auto layout using SnapKit
     func layoutChildViews() {
         self.contentView.addSubview(factImage)
         containerView.addSubview(factTitle)
@@ -102,9 +103,12 @@ class FactTableViewCell: UITableViewCell {
         }
     }
     
+    //Updates the cell with Fact data received from the controller.
     func updateCellWithData(fromItem fact: Fact) {
         if let imageURL = fact.imageHref {
             if FactSheetService.isConnectedToInternet {
+                //SDWebImage: Fetches from memory if image is already cached, else sends a request for the image.
+                //The placeholder image is shown for the time when images is being fetched or if the link is broken
                 factImage.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: kPlaceholderImageName), options: [SDWebImageOptions.cacheMemoryOnly,SDWebImageOptions.allowInvalidSSLCertificates], completed: { (image, error, fetchedFrom, originalUrl) in
                     if error == nil {
                         self.factImage.image = image
@@ -116,10 +120,12 @@ class FactTableViewCell: UITableViewCell {
                     }
                 })
             } else {
+                //No connection: Placeholder image is set & alert is shown
                 factImage.image = UIImage(named: kPlaceholderImageName)
                 ((window?.rootViewController as? UINavigationController)?.viewControllers[0] as? FactSheetViewController)?.showAlert()
             }
         } else {
+            //When value for image key is null
             factImage.image = UIImage(named: kNullImagePlaceHolderName)
         }
         
