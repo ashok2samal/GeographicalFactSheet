@@ -9,7 +9,7 @@
 import Foundation
 
 //Model for the entire view.
-class FactSheet: Decodable {
+struct FactSheet: Decodable {
     let title: String?
     let rows: [Fact]?
 }
