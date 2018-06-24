@@ -122,7 +122,7 @@ class FactTableViewCell: UITableViewCell {
             } else {
                 //No connection: Placeholder image is set & alert is shown
                 factImage.image = UIImage(named: kPlaceholderImageName)
-                ((window?.rootViewController as? UINavigationController)?.viewControllers[0] as? FactSheetViewController)?.showAlert()
+                ((window?.rootViewController as? UINavigationController)?.viewControllers[0] as? FactSheetViewController)?.showAlert(title: kConnectionErrorAlertTitle, message: kConnectionErrorAlertMessage)
             }
         } else {
             //When value for image key is null

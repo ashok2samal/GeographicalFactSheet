@@ -17,7 +17,7 @@ class FactSheetService {
     }
     
     //Requests for the data using Alamofire.
-    static func getFacts(completion: @escaping (_ result: FactSheet) -> Void) {
+    static func getFacts(completion: @escaping (_ result: FactSheet?, _ error: Error?) -> Void) {
         var factSheet: FactSheet?
         Alamofire.request(kFactResourceEndpoint).responseJSON { response in
             //Received json(isoLatin1) is converted to utf8 data then decoded using model class.
@@ -25,9 +25,9 @@ class FactSheetService {
                 let encodedData = dataAsString.data(using: .utf8)
                 do {
                     factSheet = try JSONDecoder().decode(FactSheet.self, from: encodedData!) as FactSheet
-                    completion(factSheet!)
+                    completion(factSheet!, nil)
                 } catch let jsonError {
-                    print(jsonError.localizedDescription)
+                    completion(nil, jsonError)
                 }
             }
         }

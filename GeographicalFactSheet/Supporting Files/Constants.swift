@@ -10,6 +10,8 @@ import Foundation
 
 let kConnectionErrorAlertTitle = "Connection Error!!"
 let kConnectionErrorAlertMessage = "Please check your internet connection."
+let kDataLoadErrorAlertTitle = "Data Load Failed"
+let kDataLoadErrorAlertMessage = "Couldn't get the fact details from the server."
 let kAlertRetryButtonText = "Retry"
 let kCustomTableViewCellIdentifier = "factCell"
 let kPlaceholderImageName = "placeholder.png"

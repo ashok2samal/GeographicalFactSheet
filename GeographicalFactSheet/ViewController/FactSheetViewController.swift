@@ -11,8 +11,8 @@ import SDWebImage
 
 class FactSheetViewController: UIViewController {
 
-    private var factSheet: FactSheet?
-    private var facts: [Fact] = []
+    internal var factSheet: FactSheet?
+    internal var facts: [Fact] = []
     let factsTableView = UITableView()
     
     lazy var refresher: UIRefreshControl = {
@@ -37,26 +37,30 @@ class FactSheetViewController: UIViewController {
     //Incase of network issue shows alert to the user.
     func downloadFactsData() {
         if FactSheetService.isConnectedToInternet {
-            FactSheetService.getFacts() { (result) in
-                self.factSheet = result
-                if let factsArray = self.factSheet?.rows {
-                    self.facts = factsArray.filter({ (fact) -> Bool in
-                        fact.title != nil
-                    })
+            FactSheetService.getFacts() { (result, error) in
+                if error == nil {
+                    self.factSheet = result
+                    if let factsArray = self.factSheet?.rows {
+                        self.facts = factsArray.filter({ (fact) -> Bool in
+                            fact.title != nil
+                        })
+                    }
+                    self.navigationItem.title = self.factSheet?.title
+                    self.factsTableView.reloadData()
+                } else {
+                    self.showAlert(title: kDataLoadErrorAlertTitle, message: kDataLoadErrorAlertMessage)
                 }
-                self.navigationItem.title = self.factSheet?.title
-                self.factsTableView.reloadData()
             }
         } else {
-            showAlert()
+            showAlert(title: kConnectionErrorAlertTitle, message: kConnectionErrorAlertMessage)
         }
     }
     
     //Prepares an Alert & presents.
-    func showAlert()
+    func showAlert(title: String, message: String)
     {
-        let alert = UIAlertController(title: kConnectionErrorAlertTitle,
-                                      message: kConnectionErrorAlertMessage,
+        let alert = UIAlertController(title: title,
+                                      message: message,
                                       preferredStyle: .alert)
     
         let retryButton = UIAlertAction(title: kAlertRetryButtonText, style: UIAlertActionStyle.default, handler: { action in
@@ -81,7 +85,7 @@ class FactSheetViewController: UIViewController {
     
     //Sets up the navigation controller during view load.
     func setupNavigationController() {
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor =  #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1) ]
         let refreshButton = UIBarButtonItem(image: UIImage(named: kRefreshImageName), style: .plain, target: self, action: #selector(FactSheetViewController.refresh))
